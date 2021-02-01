@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 205966691}
   - component: {fileID: 205966690}
   - component: {fileID: 205966688}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (3)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 391689039}
   - component: {fileID: 391689038}
   - component: {fileID: 391689036}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 750432019}
   - component: {fileID: 750432018}
   - component: {fileID: 750432016}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (4)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -740,6 +740,9 @@ MonoBehaviour:
   _playerSO: {fileID: 11400000, guid: 8a8993c36c3942b4599a5abe6f4e4088, type: 2}
   _foodSO: {fileID: 11400000, guid: 4ad858eb471afb04f9e64c1c7382d5ae, type: 2}
   _scoreText: {fileID: 583363027}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &923330065
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,7 +767,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923330065}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.37190393, y: -1.0530823, z: -0.42321512}
+  m_LocalPosition: {x: 0.37190393, y: -1.0530823, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 391689039}
@@ -930,7 +933,7 @@ GameObject:
   - component: {fileID: 1542294193}
   - component: {fileID: 1542294192}
   - component: {fileID: 1542294190}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (2)
   m_TagString: Wall
   m_Icon: {fileID: 0}

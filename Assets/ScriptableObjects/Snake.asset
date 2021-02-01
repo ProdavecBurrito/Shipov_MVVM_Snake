@@ -17,4 +17,4 @@ MonoBehaviour:
   StartPosition: {x: 0, y: 0}
   MaxTimeToMove: 1
   StartSize: 1
-  StartSpeed: 0.2
+  StartSpeed: 0.1

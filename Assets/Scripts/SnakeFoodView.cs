@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Shipov_Snake
 {
-    internal class SnakeFoodView : MonoBehaviour
+    internal class SnakeFoodView
     {
         private SnakeFoodViewModel _snakeFoodViewModel;
 
