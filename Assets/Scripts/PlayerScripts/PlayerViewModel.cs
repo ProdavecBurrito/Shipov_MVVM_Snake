@@ -3,32 +3,28 @@ using UnityEngine;
 
 namespace Shipov_Snake
 {
-    internal class PlayerViewModel : IMove, IUpdate
+    internal class PlayerViewModel : IMove
     {
         public event Action EndGame = delegate() { };
         public event Action Feed = delegate () { };
 
         public bool IsDead { get; private set; }
-        public PlayerModel Player { get; }
+        public PlayerModel PlayerModel { get; }
 
         public PlayerViewModel(PlayerModel player)
         {
-            Player = player;
-        }
-
-        public void UpdateTick()
-        {
-            Move();
+            PlayerModel = player;
+            PlayerModel.Player = GameObject.Instantiate(PlayerModel.Player, PlayerModel.Position, Quaternion.identity);
         }
 
         public void Move()
         {
-
+            PlayerModel.Player.transform.position += (Vector3)PlayerModel.Direction * PlayerModel.Speed;
         }
 
         public void Eat()
         {
-            Player.Size += 1;
+            PlayerModel.Size += 1;
             Feed?.Invoke();
         }
 
