@@ -8,7 +8,6 @@ namespace Shipov_Snake
         public GameObject PlayerPrefab;
         public Vector2 StartDirection;
         public Vector2 StartPosition;
-        public float MaxTimeToMove;
         public int StartSize;
         public float StartSpeed;
     }

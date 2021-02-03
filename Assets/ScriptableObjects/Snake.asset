@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Snake
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 2016465624549198525, guid: bdc595d099a5282458a8f49080f5397d, type: 3}
-  StartDirection: {x: 0.1, y: 0}
+  StartDirection: {x: 1, y: 0}
   StartPosition: {x: 0, y: 0}
-  MaxTimeToMove: 1
   StartSize: 1
-  StartSpeed: 0.1
+  StartSpeed: 0.5

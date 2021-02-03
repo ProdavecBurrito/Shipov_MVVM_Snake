@@ -6,8 +6,7 @@ namespace Shipov_Snake
     {
         public GameObject Player;
         public Vector2 Direction;
-        public float TimeToMove;
-        public int Size;
+        public int BodySize;
         public float Speed { get; }
         public Vector2 Position;
 
@@ -15,9 +14,8 @@ namespace Shipov_Snake
         {
             Player = playerData.PlayerPrefab;
             Direction = playerData.StartDirection;
-            TimeToMove = playerData.MaxTimeToMove;
             Position = playerData.StartPosition; 
-            Size = playerData.StartSize;
+            BodySize = playerData.StartSize;
             Speed = playerData.StartSpeed;
         }
     }

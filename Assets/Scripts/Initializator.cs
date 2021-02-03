@@ -11,11 +11,15 @@ namespace Shipov_Snake
         public SnakeFoodView SnakeFoodView { get; private set; }
         public SnakeFoodViewModel SnakeFoodViewModel { get; private set; }
         public ScoreView ScoreView { get; private set; }
+        public GameSpeed GameSpeed { get; private set; }
+        public EndGame EndGame { get; private set; }
+        public SnakeTail SnakeTail { get; private set; }
 
         public Initializator(PlayerSOData playerSO, FoodSO foodSO, LayerMask layerMask, Text text)
         {
+            SnakeTail = new SnakeTail();
             var playerData = new PlayerModel(playerSO);
-            PlayerViewModel = new PlayerViewModel(playerData, layerMask);
+            PlayerViewModel = new PlayerViewModel(playerData, layerMask, SnakeTail);
             PlayerView = new PlayerView();
             PlayerView.Initialize(PlayerViewModel);
             InputController = new InputController(PlayerViewModel);
@@ -27,6 +31,10 @@ namespace Shipov_Snake
 
             ScoreView = new ScoreView();
             ScoreView.Init(text, PlayerViewModel, SnakeFoodViewModel);
+
+            GameSpeed = new GameSpeed();
+
+            EndGame = new EndGame(PlayerViewModel, GameSpeed);
         }
     }
 }

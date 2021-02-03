@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Shipov_Snake
 {
-    internal class PlayerView :IUpdate
+    internal class PlayerView : IUpdate
     {
         private PlayerViewModel _playerViewModel;
 
@@ -13,8 +13,11 @@ namespace Shipov_Snake
 
         public void UpdateTick()
         {
-            _playerViewModel.Move();
-            _playerViewModel.OnTriggerEnterRealization();
+            if (!_playerViewModel.IsDead)
+            {
+                _playerViewModel.Move();
+                _playerViewModel.OnTriggerEnterRealization();
+            }
         }
     }
 }

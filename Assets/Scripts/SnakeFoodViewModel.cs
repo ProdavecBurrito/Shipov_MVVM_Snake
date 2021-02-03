@@ -4,6 +4,9 @@ namespace Shipov_Snake
 {
     internal class SnakeFoodViewModel : IMove
     {
+        private const float MAX_POSITION = 3.5f;
+        private const float MIN_POSITION = -3.5f;
+
         public bool IsEaten;
         public Collider2D SnakeCollider;
 
@@ -18,8 +21,8 @@ namespace Shipov_Snake
 
         public void Move()
         {
-            FoodModel.Position.x = Random.Range(-3.5f, 3.5f);
-            FoodModel.Position.y = Random.Range(-3.5f, 3.5f);
+            FoodModel.Position.x = Random.Range(MIN_POSITION, MAX_POSITION);
+            FoodModel.Position.y = Random.Range(MIN_POSITION, MAX_POSITION);
             FoodModel.Food.transform.position = new Vector2(FoodModel.Position.x, FoodModel.Position.y);
         }
     }

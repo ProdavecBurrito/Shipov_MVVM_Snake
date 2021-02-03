@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Food
   - Wall
+  - Tail
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - Interactable
   - Player
-  - 
+  - Tail
   - 
   - 
   - 

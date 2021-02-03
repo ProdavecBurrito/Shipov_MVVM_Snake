@@ -4,8 +4,8 @@ namespace Shipov_Snake
 {
     internal sealed class InputController : IUpdate
     {
-        private const float MAX_VALUE = 0.1f;
-        private const float MIN_VALUE = -0.1f;
+        private const float MAX_VALUE = 1f;
+        private const float MIN_VALUE = -1f;
         private const float ZERO_VALUE = 0.0f;
 
         private PlayerViewModel _playerView;
