@@ -10,7 +10,6 @@ namespace Shipov_Snake
 
         public SnakeFoodModel(FoodSO food)
         {
-            Food = food.FoodPrefab;
             Position = food.Position;
             ScoreValue = food.ScoreValue;
         }

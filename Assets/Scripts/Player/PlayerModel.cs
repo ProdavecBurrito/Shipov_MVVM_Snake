@@ -12,7 +12,6 @@ namespace Shipov_Snake
 
         public PlayerModel(PlayerSOData playerData)
         {
-            Player = playerData.PlayerPrefab;
             Direction = playerData.StartDirection;
             Position = playerData.StartPosition; 
             BodySize = playerData.StartSize;

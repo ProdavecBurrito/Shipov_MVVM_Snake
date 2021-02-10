@@ -10,23 +10,28 @@ namespace Shipov_Snake
         public event Action Feed = delegate () { };
 
         private Timer _timer;
-        private CircleCollider2D _collider2D;
-        private LayerMask _layerMask;
+        private CircleCollider2D _playerCollider;
         private List<Vector2> _positionPoints;
         private SnakeTail _snakeTail;
+        private Factory _factory;
+
+        private LayerMask _layerMask;
 
         public bool IsDead { get; private set; }
         public PlayerModel PlayerModel { get; }
 
-        public PlayerViewModel(PlayerModel player, LayerMask layerMask, SnakeTail snakeTail)
+        public PlayerViewModel(PlayerModel player, LayerMask layerMask, SnakeTail snakeTail, Factory factory)
         {
             _timer = new Timer();
             PlayerModel = player;
-            PlayerModel.Player = GameObject.Instantiate(PlayerModel.Player, PlayerModel.Position, Quaternion.identity);
-            _collider2D = PlayerModel.Player.GetComponent<CircleCollider2D>();
+            PlayerModel.Player = factory.Create("SnakeHead", PlayerModel.Position, Quaternion.identity);
+            _playerCollider = PlayerModel.Player.GetComponent<CircleCollider2D>();
             _layerMask = layerMask;
             _positionPoints = new List<Vector2>();
             _snakeTail = snakeTail;
+            _factory = factory;
+
+            Feed += SpawnTailMember;
         }
 
         public void Move()
@@ -46,14 +51,14 @@ namespace Shipov_Snake
 
         public void OnTriggerEnterRealization()
         {
-            var collider = Physics2D.OverlapCircle(_collider2D.transform.position, _collider2D.radius, _layerMask.value);
+            var collider = Physics2D.OverlapCircle(_playerCollider.transform.position, _playerCollider.radius, _layerMask.value);
             if (collider != null)
             {
                 if (collider.gameObject.CompareTag("Food"))
                 {
-                    collider.enabled = false; // Не очень нравится такой способ, если честно. Можно подсказать по этому поводу?
+                    collider.enabled = false;
                     Eat();
-                    collider.enabled = true; // Это сделанно так, изза того, что колайдеры могут пересечься несколько раз и тогда Eat так же вызывается несколько раз
+                    collider.enabled = true;
                 }
                 if (collider.gameObject.CompareTag("Wall") || collider.gameObject.CompareTag("Tail"))
                 {
@@ -71,17 +76,16 @@ namespace Shipov_Snake
             }
         }
 
-        private void SpawnTail() // Мне кажется, это вообще не ответственность этого класса и обьекта в целом. Если я прав - то как это лучше сделать?
+        private void SpawnTailMember()
         {
             var lastPositionIndex = _positionPoints.Count - 1;
-            _snakeTail.AddTailMember(GameObject.Instantiate(Resources.Load<GameObject>("SnakeTail")), _positionPoints[lastPositionIndex]);
+            _snakeTail.AddTailMember(_factory.Create("SnakeTail"), _positionPoints[lastPositionIndex]);
         }
 
         public void Eat()
         {
             PlayerModel.BodySize ++;
             Feed?.Invoke();
-            SpawnTail();
         }
 
         public void Die()

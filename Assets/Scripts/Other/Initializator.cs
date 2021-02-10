@@ -3,8 +3,9 @@ using UnityEngine.UI;
 
 namespace Shipov_Snake
 {
-    internal class Initializator
+    internal sealed class Initializator
     {
+        public Factory Factory { get; private set; }
         public PlayerView PlayerView { get; private set; }
         public PlayerViewModel PlayerViewModel { get; private set; }
         public InputController InputController { get; private set; }
@@ -17,15 +18,17 @@ namespace Shipov_Snake
 
         public Initializator(PlayerSOData playerSO, FoodSO foodSO, LayerMask layerMask, Text text)
         {
+            Factory = new Factory();
+
             SnakeTail = new SnakeTail();
             var playerData = new PlayerModel(playerSO);
-            PlayerViewModel = new PlayerViewModel(playerData, layerMask, SnakeTail);
+            PlayerViewModel = new PlayerViewModel(playerData, layerMask, SnakeTail, Factory);
             PlayerView = new PlayerView();
             PlayerView.Initialize(PlayerViewModel);
             InputController = new InputController(PlayerViewModel);
 
             var foodData = new SnakeFoodModel(foodSO);
-            SnakeFoodViewModel = new SnakeFoodViewModel(foodData);
+            SnakeFoodViewModel = new SnakeFoodViewModel(foodData, Factory);
             SnakeFoodView = new SnakeFoodView();
             SnakeFoodView.Initialize(SnakeFoodViewModel, PlayerViewModel);
 
